@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#0f172a"/>
+  <rect x="80" y="90" width="640" height="300" rx="16" fill="#14b8a6"/>
+  <circle cx="220" cy="360" r="36" fill="#111827"/>
+  <circle cx="560" cy="360" r="36" fill="#111827"/>
+  <text x="110" y="70" fill="#fff" font-size="28" font-family="Arial">SERVICE 7</text>
+</svg>
