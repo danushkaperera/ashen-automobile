@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $pageTitle ?? setting('meta_title', setting('site_name')) }}</title>
     <meta name="description" content="{{ $pageDescription ?? setting('meta_description') }}">
-    <link rel="icon" href="{{ media_url(setting('favicon'), asset('images/logo.jpg')) }}">
+    <link rel="icon" href="{{ media_url(setting('favicon'), asset('images/logo.png')) }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family={{ $fontQuery }}&display=swap" rel="stylesheet">
@@ -48,7 +48,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="{{ route('home') }}">
-                <img src="{{ media_url(setting('logo'), asset('images/logo.jpg')) }}" alt="{{ setting('site_name') }}">
+                <img src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') }}">
                 <span>
                     <strong>{{ setting('site_name', 'Auto Bridge') }}</strong>
                     <small>{{ setting('tagline') }}</small>
@@ -74,7 +74,7 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
-                <img class="footer-logo" src="{{ media_url(setting('logo'), asset('images/logo.jpg')) }}" alt="{{ setting('site_name') }}">
+                <img class="footer-logo" src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') }}">
                 <h3>{{ setting('site_name') }}</h3>
                 <p>{{ setting('footer_about') }}</p>
             </div>

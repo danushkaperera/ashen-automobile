@@ -11,7 +11,7 @@
 <body>
     <aside class="sidebar">
         <a class="sidebar-brand" href="{{ route('admin.dashboard') }}">
-            <img src="{{ asset('images/logo.jpg') }}" alt="Auto Bridge">
+            <img src="{{ asset('images/logo.png') }}" alt="Auto Bridge">
             <span>Auto Bridge</span>
             <small>Admin panel</small>
         </a>

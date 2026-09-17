@@ -10,7 +10,7 @@
 <div class="login-wrap">
     <form class="login-card" method="POST" action="{{ route('admin.login.store') }}">
         @csrf
-        <img class="login-logo" src="{{ asset('images/logo.jpg') }}" alt="Auto Bridge">
+        <img class="login-logo" src="{{ asset('images/logo.png') }}" alt="Auto Bridge">
         <h1>Auto Bridge Admin</h1>
         <p class="help">Sign in to customise the website frontend.</p>
         @if($errors->any())

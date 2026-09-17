@@ -44,8 +44,8 @@ class DatabaseSeeder extends Seeder
         $settings = [
             'site_name' => ['Auto Bridge', 'general', 'text'],
             'tagline' => ['Your local mechanic in Middleton, Christchurch — diagnostics, repairs, and EV & hybrid servicing.', 'general', 'text'],
-            'logo' => ['/images/logo.jpg', 'general', 'image'],
-            'favicon' => ['/images/logo.jpg', 'general', 'image'],
+            'logo' => ['/images/logo.png', 'general', 'image'],
+            'favicon' => ['/images/logo.png', 'general', 'image'],
             'topbar_enabled' => ['1', 'general', 'boolean'],
             'topbar_text' => ['Open 24 hours · 11a Midas Place, Middleton, Christchurch', 'general', 'text'],
             'phone' => ['+64 29 020 16792', 'contact', 'text'],
