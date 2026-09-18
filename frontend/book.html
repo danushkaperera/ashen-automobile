@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Book a bay | Auto Bridge Christchurch</title>
+    <meta name="description" content="Choose a service, share a few vehicle details and we will confirm a workshop timeslot. Auto Bridge is open 24 hours.">
+    <link rel="icon" href="images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span>Open 24 hours · 11a Midas Place, Middleton, Christchurch</span>
+            <a href="tel:+642902016792">+64 29 020 16792</a>
+        </div>
+    </div>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <img src="images/logo.png" alt="Auto Bridge">
+            </a>
+            <button class="nav-toggle" type="button" aria-label="Menu">Menu</button>
+            <nav class="site-nav">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="faq.html">FAQ</a>
+                <a href="contact.html">Contact</a>
+                <a class="btn btn-primary" href="book.html">Book now</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        
+<section class="page-hero"><div class="container"><h1>Book a bay</h1><p>Choose a service, share a few vehicle details and we will confirm a workshop timeslot. Auto Bridge is open 24 hours.</p></div></section>
+<section class="section">
+    <div class="container" style="max-width:820px">
+        <form class="form-card" data-mailto="booking" data-subject="Booking request">
+            <div class="form-grid">
+                <div><label>Name</label><input name="name" required></div>
+                <div><label>Email</label><input type="email" name="email" required></div>
+                <div><label>Phone</label><input name="phone" required></div>
+                <div>
+                    <label>Service</label>
+                    <select name="service">
+                        <option value="">General enquiry</option>
+                        <option value="Diagnostics & Repairs">Diagnostics & Repairs</option>
+                        <option value="EV & Hybrid Specialists">EV & Hybrid Specialists</option>
+                        <option value="Pre-Purchase Inspections">Pre-Purchase Inspections</option>
+                        <option value="Engine diagnostics">Engine diagnostics</option>
+                        <option value="Mechanical repairs">Mechanical repairs</option>
+                        <option value="Brake & suspension">Brake & suspension</option>
+                        <option value="Cooling systems">Cooling systems</option>
+                        <option value="Electrical faults">Electrical faults</option>
+                        <option value="Battery health checks">Battery health checks</option>
+                    </select>
+                </div>
+                <div><label>Vehicle make</label><input name="vehicle_make"></div>
+                <div><label>Vehicle model</label><input name="vehicle_model"></div>
+                <div><label>Year</label><input name="vehicle_year"></div>
+                <div><label>Preferred date</label><input type="date" name="preferred_date"></div>
+                <div><label>Preferred time</label><input name="preferred_time" placeholder="e.g. 9:00am"></div>
+            </div>
+            <label>Notes</label>
+            <textarea name="message"></textarea>
+            <button class="btn btn-primary" type="submit" style="margin-top:16px">Request booking</button>
+        </form>
+    </div>
+</section>
+
+    </main>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <img class="footer-logo" src="images/logo.png" alt="Auto Bridge">
+                <p>Auto Bridge is a car repair shop in Middleton, Christchurch. Open 24 hours for diagnostics, mechanical repairs, EV &amp; hybrid servicing and pre-purchase inspections.</p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <a href="services.html">Services</a>
+                <a href="about.html">About</a>
+                <a href="book.html">Book now</a>
+                <a href="find-us.html">Find us</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+            <div>
+                <h4>Workshop</h4>
+                <p>11a Midas Place, Middleton, Christchurch 8024, New Zealand</p>
+                <p><a href="tel:+642902016792">+64 29 020 16792</a></p>
+                <p><a href="mailto:service@autobridge.co.nz">service@autobridge.co.nz</a></p>
+                <p><a href="https://www.google.com/maps/place/Auto+Bridge/@-43.5419295,172.5818326,553m/data=!3m1!1e3!4m6!3m5!1s0x6d31f559b16c7ad1:0x51f12fe80e2e3e07!8m2!3d-43.5419295!4d172.5818326!16s%2Fg%2F11y_gwd7lm" target="_blank" rel="noopener">Google Maps</a></p>
+            </div>
+            <div>
+                <h4>Hours</h4>
+                <p>Every day · Open 24 hours</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <span>© 2026 Auto Bridge. All rights reserved.</span>
+            <div class="socials"></div>
+        </div>
+    </footer>
+    
+    <script src="js/site.js"></script>
+</body>
+</html>

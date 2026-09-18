@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+  <rect width="1400" height="800" fill="#111827"/>
+  <rect x="0" y="500" width="1400" height="300" fill="#1e293b"/>
+  <rect x="200" y="220" width="980" height="280" rx="8" fill="#0f172a"/>
+  <rect x="240" y="260" width="200" height="120" fill="#22d3ee" opacity=".3"/>
+  <rect x="480" y="260" width="200" height="120" fill="#f97316" opacity=".85"/>
+  <rect x="720" y="260" width="200" height="120" fill="#eab308" opacity=".7"/>
+  <rect x="960" y="260" width="160" height="120" fill="#64748b"/>
+  <circle cx="360" cy="560" r="70" fill="#0b1220" stroke="#94a3b8" stroke-width="14"/>
+  <circle cx="1080" cy="560" r="70" fill="#0b1220" stroke="#94a3b8" stroke-width="14"/>
+  <text x="220" y="180" fill="#f97316" font-size="36" font-family="Arial">BRAKES · ELECTRICS · SERVICE</text>
+</svg>

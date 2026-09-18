@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="800" fill="url(#g)"/>
+  <rect x="80" y="420" width="1240" height="24" fill="#334155"/>
+  <rect x="160" y="250" width="420" height="170" fill="#111827"/>
+  <rect x="180" y="270" width="160" height="90" fill="#38bdf8" opacity=".25"/>
+  <rect x="700" y="280" width="520" height="140" rx="18" fill="#f97316"/>
+  <circle cx="780" cy="470" r="48" fill="#0f172a" stroke="#eab308" stroke-width="10"/>
+  <circle cx="1120" cy="470" r="48" fill="#0f172a" stroke="#eab308" stroke-width="10"/>
+  <rect x="820" y="330" width="280" height="70" fill="#0b1220"/>
+  <text x="120" y="200" fill="#f8fafc" font-size="42" font-family="Arial">DIAGNOSTICS BAY</text>
+</svg>

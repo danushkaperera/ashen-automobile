@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+  <rect width="900" height="700" fill="#0f172a"/>
+  <rect x="60" y="80" width="780" height="520" fill="#1e293b"/>
+  <rect x="90" y="110" width="240" height="180" fill="#38bdf8" opacity=".2"/>
+  <rect x="360" y="200" width="430" height="160" rx="12" fill="#f97316"/>
+  <circle cx="430" cy="430" r="40" fill="#0b1220" stroke="#eab308" stroke-width="8"/>
+  <circle cx="690" cy="430" r="40" fill="#0b1220" stroke="#eab308" stroke-width="8"/>
+  <rect x="90" y="470" width="180" height="90" fill="#334155"/>
+  <text x="90" y="60" fill="#fff" font-size="28" font-family="Arial">WORKSHOP FLOOR</text>
+</svg>

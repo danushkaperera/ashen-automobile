@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family={{ $fontQuery }}&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=5">
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=6">
     <style>
         :root {
             --primary: {{ setting('primary_color', '#4BA8E8') }};
