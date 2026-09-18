@@ -14,18 +14,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family={{ $fontQuery }}&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/site.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=5">
     <style>
         :root {
-            --primary: {{ setting('primary_color', '#f97316') }};
-            --secondary: {{ setting('secondary_color', '#0f172a') }};
-            --accent: {{ setting('accent_color', '#eab308') }};
-            --bg: {{ setting('background_color', '#f6f3ee') }};
+            --primary: {{ setting('primary_color', '#4BA8E8') }};
+            --secondary: {{ setting('secondary_color', '#002856') }};
+            --accent: {{ setting('accent_color', '#7DD3FC') }};
+            --bg: {{ setting('background_color', '#E8F4FC') }};
             --surface: {{ setting('surface_color', '#ffffff') }};
-            --text: {{ setting('text_color', '#111827') }};
-            --muted: {{ setting('muted_color', '#6b7280') }};
-            --header: {{ setting('header_background', '#0b1220') }};
-            --footer: {{ setting('footer_background', '#0b1220') }};
+            --text: {{ setting('text_color', '#002856') }};
+            --muted: {{ setting('muted_color', '#5A7A90') }};
+            --header: {{ setting('header_background', '#002856') }};
+            --footer: {{ setting('footer_background', '#002856') }};
             --radius: {{ setting('button_radius', '6') }}px;
             --overlay: {{ setting('hero_overlay', '0.55') }};
             --font-heading: "{{ $headingFont }}", sans-serif;
@@ -48,11 +48,17 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="{{ route('home') }}">
-                <img src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') }}">
-                <span>
-                    <strong>{{ setting('site_name', 'Auto Bridge') }}</strong>
-                    <small>{{ setting('tagline') }}</small>
-                </span>
+                <img src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') ?: 'Auto Bridge' }}">
+                @if(filled(setting('site_name')) || filled(setting('tagline')))
+                    <span>
+                        @if(filled(setting('site_name')))
+                            <strong>{{ setting('site_name') }}</strong>
+                        @endif
+                        @if(filled(setting('tagline')))
+                            <small>{{ setting('tagline') }}</small>
+                        @endif
+                    </span>
+                @endif
             </a>
             <button class="nav-toggle" type="button" aria-label="Menu">Menu</button>
             <nav class="site-nav">
@@ -74,8 +80,10 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
-                <img class="footer-logo" src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') }}">
-                <h3>{{ setting('site_name') }}</h3>
+                <img class="footer-logo" src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') ?: 'Auto Bridge' }}">
+                @if(filled(setting('site_name')))
+                    <h3>{{ setting('site_name') }}</h3>
+                @endif
                 <p>{{ setting('footer_about') }}</p>
             </div>
             <div>
@@ -87,9 +95,6 @@
             <div>
                 <h4>Workshop</h4>
                 <p>{{ setting('address') }}</p>
-                @if(setting('plus_code'))
-                    <p>{{ setting('plus_code') }}</p>
-                @endif
                 <p><a href="tel:{{ preg_replace('/\s+/', '', setting('phone')) }}">{{ setting('phone') }}</a></p>
                 @if(setting('email'))
                     <p><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a></p>
@@ -121,6 +126,6 @@
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/site.js') }}"></script>
+    <script src="{{ asset('js/site.js') }}?v=4"></script>
 </body>
 </html>

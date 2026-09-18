@@ -5,14 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\ContactMessage;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class MessageController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $unread = $request->boolean('unread');
+
+        $messages = ContactMessage::query()
+            ->when($unread, fn ($query) => $query->unread())
+            ->latest()
+            ->paginate(20)
+            ->withQueryString();
+
         return view('admin.messages.index', [
-            'messages' => ContactMessage::query()->latest()->paginate(20),
+            'messages' => $messages,
+            'unread' => $unread,
         ]);
     }
 

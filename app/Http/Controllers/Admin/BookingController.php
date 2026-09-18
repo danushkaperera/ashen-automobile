@@ -10,10 +10,22 @@ use Illuminate\View\View;
 
 class BookingController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
+        $status = $request->string('status')->toString();
+
+        $bookings = Booking::query()
+            ->with('service')
+            ->when(in_array($status, ['pending', 'confirmed', 'completed', 'cancelled'], true), function ($query) use ($status) {
+                $query->where('status', $status);
+            })
+            ->latest()
+            ->paginate(20)
+            ->withQueryString();
+
         return view('admin.bookings.index', [
-            'bookings' => Booking::query()->with('service')->latest()->paginate(20),
+            'bookings' => $bookings,
+            'status' => $status,
         ]);
     }
 

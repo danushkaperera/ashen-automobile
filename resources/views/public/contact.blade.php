@@ -27,7 +27,6 @@
             <div class="feature-card">
                 <h3>Workshop</h3>
                 <p>{{ setting('address') }}</p>
-                @if(setting('plus_code'))<p>{{ setting('plus_code') }}</p>@endif
                 <p><a href="tel:{{ preg_replace('/\s+/', '', setting('phone')) }}">{{ setting('phone') }}</a></p>
                 @if(setting('email'))<p><a href="mailto:{{ setting('email') }}">{{ setting('email') }}</a></p>@endif
                 @if(setting('google_maps_url'))

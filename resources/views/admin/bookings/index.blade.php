@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Bookings')
+@section('title', ($status ?? '') === 'pending' ? 'Pending bookings' : 'Bookings')
 @section('content')
 <div class="card">
 <table class="table">

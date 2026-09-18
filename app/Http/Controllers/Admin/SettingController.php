@@ -57,9 +57,9 @@ class SettingController extends Controller
         };
 
         foreach ($fields as $field) {
-            if ($request->has($field)) {
+            if ($request->exists($field)) {
                 $type = str_contains($field, 'color') ? 'color' : (str_contains($field, 'content') || str_contains($field, 'embed') || str_contains($field, 'intro') || str_contains($field, 'about') ? 'textarea' : 'text');
-                $settings->put($field, $request->input($field), $tab, $type);
+                $settings->put($field, (string) $request->input($field, ''), $tab, $type);
             }
         }
 

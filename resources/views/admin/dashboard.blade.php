@@ -2,10 +2,18 @@
 @section('title', 'Dashboard')
 @section('content')
 <div class="stats">
-    <div class="stat-box"><span>Pending bookings</span><strong>{{ $pendingBookings }}</strong></div>
-    <div class="stat-box"><span>All bookings</span><strong>{{ $totalBookings }}</strong></div>
-    <div class="stat-box"><span>Unread messages</span><strong>{{ $unreadMessages }}</strong></div>
-    <div class="stat-box"><span>Services</span><strong>{{ $services }}</strong></div>
+    <a class="stat-box" href="{{ route('admin.bookings.index', ['status' => 'pending']) }}">
+        <span>Pending bookings</span><strong>{{ $pendingBookings }}</strong>
+    </a>
+    <a class="stat-box" href="{{ route('admin.bookings.index') }}">
+        <span>All bookings</span><strong>{{ $totalBookings }}</strong>
+    </a>
+    <a class="stat-box" href="{{ route('admin.messages.index', ['unread' => 1]) }}">
+        <span>Unread messages</span><strong>{{ $unreadMessages }}</strong>
+    </a>
+    <a class="stat-box" href="{{ route('admin.services.index') }}">
+        <span>Services</span><strong>{{ $services }}</strong>
+    </a>
 </div>
 <div class="form-grid">
     <div class="card">

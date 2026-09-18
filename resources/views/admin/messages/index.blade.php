@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Messages')
+@section('title', !empty($unread) ? 'Unread messages' : 'Messages')
 @section('content')
 <div class="card">
 <table class="table">
