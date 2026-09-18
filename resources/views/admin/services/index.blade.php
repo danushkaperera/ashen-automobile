@@ -11,7 +11,7 @@
         @foreach($services as $service)
             <tr>
                 <td>{{ $service->title }}</td>
-                <td>{{ $service->price_label }}</td>
+                <td>{{ $service->displayPrice() ?: '—' }}</td>
                 <td>{{ $service->is_featured ? 'Yes' : 'No' }}</td>
                 <td>{{ $service->is_active ? 'Yes' : 'No' }}</td>
                 <td class="row-actions">

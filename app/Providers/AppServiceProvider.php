@@ -8,6 +8,8 @@ use App\Models\GalleryItem;
 use App\Models\HeroSlide;
 use App\Models\MenuItem;
 use App\Models\TeamMember;
+use App\Models\User;
+use App\Models\WorkshopJob;
 use App\Models\WorkingHour;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         Route::bind('hero', fn ($value) => HeroSlide::query()->findOrFail($value));
         Route::bind('team', fn ($value) => TeamMember::query()->findOrFail($value));
         Route::bind('gallery', fn ($value) => GalleryItem::query()->findOrFail($value));
+        Route::bind('staff', fn ($value) => User::query()->where('role', 'staff')->findOrFail($value));
+        Route::bind('job', fn ($value) => WorkshopJob::query()->findOrFail($value));
 
         View::composer('layouts.public', function ($view) {
             if (! Schema::hasTable('menu_items')) {

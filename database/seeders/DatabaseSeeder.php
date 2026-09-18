@@ -37,6 +37,21 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Auto Bridge Admin',
                 'password' => 'Admin@123',
                 'is_admin' => true,
+                'role' => 'admin',
+                'is_active' => true,
+                'phone' => '+64 29 020 16792',
+            ]
+        );
+
+        User::query()->updateOrCreate(
+            ['email' => 'staff@autobridge.co.nz'],
+            [
+                'name' => 'Workshop desk',
+                'password' => 'Staff@123',
+                'is_admin' => false,
+                'role' => 'staff',
+                'is_active' => true,
+                'permissions' => ['staff.desk', 'staff.services', 'staff.jobs'],
                 'phone' => '+64 29 020 16792',
             ]
         );
@@ -68,8 +83,8 @@ class DatabaseSeeder extends Seeder
             'muted_color' => ['#5A7A90', 'appearance', 'color'],
             'header_background' => ['#002856', 'appearance', 'color'],
             'footer_background' => ['#002856', 'appearance', 'color'],
-            'heading_font' => ['Oswald', 'appearance', 'text'],
-            'body_font' => ['Barlow', 'appearance', 'text'],
+            'heading_font' => ['CBABeaconSans', 'appearance', 'text'],
+            'body_font' => ['CBABeaconSans', 'appearance', 'text'],
             'button_radius' => ['6', 'appearance', 'text'],
             'hero_overlay' => ['0.55', 'appearance', 'text'],
             'meta_title' => ['Auto Bridge | Car Repair Shop, Middleton Christchurch', 'seo', 'text'],
@@ -193,6 +208,18 @@ class DatabaseSeeder extends Seeder
                 'short_description' => $short,
                 'description' => $html.'<p>We quote before extra work and only proceed with your approval. Visit Auto Bridge at 11a Midas Place, Middleton, or call +64 29 020 16792 — open 24 hours.</p>',
                 'price_label' => $price,
+                'price' => match ($title) {
+                    'Diagnostics & Repairs' => 185,
+                    'EV & Hybrid Specialists' => 220,
+                    'Pre-Purchase Inspections' => 249,
+                    'Engine diagnostics' => 149,
+                    'Mechanical repairs' => 189,
+                    'Brake & suspension' => 169,
+                    'Cooling systems' => 159,
+                    'Electrical faults' => 149,
+                    'Battery health checks' => 89,
+                    default => 0,
+                },
                 'is_featured' => $featured,
                 'is_active' => true,
                 'sort_order' => $order,

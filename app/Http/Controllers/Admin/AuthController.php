@@ -24,6 +24,20 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+            $user = Auth::user();
+
+            if (! $user->is_active) {
+                Auth::logout();
+
+                return back()->withErrors([
+                    'email' => 'This account is disabled.',
+                ])->onlyInput('email');
+            }
+
+            if (! $user->isAdmin()) {
+                return redirect($user->homePath())
+                    ->with('error', 'Staff accounts cannot open the admin dashboard.');
+            }
 
             return redirect()->intended(route('admin.dashboard'));
         }

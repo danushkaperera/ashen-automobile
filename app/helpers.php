@@ -31,6 +31,13 @@ if (! function_exists('media_url')) {
     }
 }
 
+if (! function_exists('money')) {
+    function money(mixed $amount): string
+    {
+        return '$'.number_format((float) $amount, 2);
+    }
+}
+
 if (! function_exists('section')) {
     function section(string $key): ?\App\Models\HomepageSection
     {

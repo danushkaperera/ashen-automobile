@@ -20,7 +20,7 @@ class SettingController extends Controller
         return view('admin.settings.index', [
             'tab' => $tab,
             'fonts' => [
-                'Oswald', 'Barlow', 'Montserrat', 'Poppins', 'Inter', 'Roboto',
+                'CBABeaconSans', 'Oswald', 'Barlow', 'Montserrat', 'Poppins', 'Inter', 'Roboto',
                 'Rajdhani', 'Teko', 'Outfit', 'Playfair Display', 'Source Sans 3',
             ],
         ]);

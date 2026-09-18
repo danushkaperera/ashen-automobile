@@ -6,7 +6,7 @@
     <div class="container split">
         <div class="prose">
             {!! $service->description !!}
-            @if($service->price_label)<p class="price">{{ $service->price_label }}</p>@endif
+            @if($service->displayPrice())<p class="price">{{ $service->displayPrice() }}</p>@endif
             <a class="btn btn-primary" href="{{ route('booking') }}">Book this service</a>
         </div>
         <div class="about-media">

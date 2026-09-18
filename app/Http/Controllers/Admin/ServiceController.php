@@ -33,6 +33,10 @@ class ServiceController extends Controller
         $data['image'] = $this->uploadImage($request, 'image', 'services');
         $data['is_active'] = $request->boolean('is_active', true);
         $data['is_featured'] = $request->boolean('is_featured');
+        $data['price'] = $data['price'] ?? 0;
+        if (empty($data['price_label']) && (float) $data['price'] > 0) {
+            $data['price_label'] = money($data['price']);
+        }
         Service::query()->create($data);
 
         return redirect()->route('admin.services.index')->with('success', 'Service created.');
@@ -50,6 +54,10 @@ class ServiceController extends Controller
         $data['image'] = $this->uploadImage($request, 'image', 'services', $service->image);
         $data['is_active'] = $request->boolean('is_active');
         $data['is_featured'] = $request->boolean('is_featured');
+        $data['price'] = $data['price'] ?? 0;
+        if (empty($data['price_label']) && (float) $data['price'] > 0) {
+            $data['price_label'] = money($data['price']);
+        }
         $service->update($data);
 
         return redirect()->route('admin.services.index')->with('success', 'Service updated.');
@@ -71,6 +79,7 @@ class ServiceController extends Controller
             'short_description' => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
             'price_label' => ['nullable', 'string', 'max:80'],
+            'price' => ['nullable', 'numeric', 'min:0'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ]);
     }

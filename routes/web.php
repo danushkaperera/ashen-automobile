@@ -18,6 +18,15 @@ use App\Http\Controllers\Admin\StatController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\WorkingHourController;
+use App\Http\Controllers\Admin\StaffUserController;
+use App\Http\Controllers\Admin\CustomerController as AdminCustomerController;
+use App\Http\Controllers\Admin\JobController as AdminJobController;
+use App\Http\Controllers\Staff\AuthController as StaffAuthController;
+use App\Http\Controllers\Staff\JobController as StaffJobController;
+use App\Http\Controllers\Staff\CustomerController as StaffCustomerController;
+use App\Http\Controllers\Staff\DashboardController as StaffDashboardController;
+use App\Http\Controllers\Staff\ServiceController as StaffServiceController;
+use App\Http\Controllers\Staff\VisitController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\Route;
@@ -87,9 +96,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('login', [AuthController::class, 'login'])->name('login.store');
     });
 
-    Route::middleware('auth')->group(function () {
-        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::middleware('auth')->group(function () {
+            Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+        });
+
+        Route::middleware(['auth', 'admin'])->group(function () {
+            Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
@@ -126,5 +138,47 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        Route::get('staff-users', [StaffUserController::class, 'index'])->name('staff.index');
+        Route::get('staff-users/create', [StaffUserController::class, 'create'])->name('staff.create');
+        Route::post('staff-users', [StaffUserController::class, 'store'])->name('staff.store');
+        Route::get('staff-users/access', [StaffUserController::class, 'access'])->name('staff.access');
+        Route::put('staff-users/access', [StaffUserController::class, 'updateAccess'])->name('staff.access.update');
+        Route::get('staff-users/{staff}/edit', [StaffUserController::class, 'edit'])->name('staff.edit');
+        Route::put('staff-users/{staff}', [StaffUserController::class, 'update'])->name('staff.update');
+        Route::delete('staff-users/{staff}', [StaffUserController::class, 'destroy'])->name('staff.destroy');
+
+        Route::get('customers', [AdminCustomerController::class, 'index'])->name('customers.index');
+        Route::get('customers/{customer}', [AdminCustomerController::class, 'show'])->name('customers.show');
+
+        Route::get('jobs', [AdminJobController::class, 'index'])->name('jobs.index');
+        Route::get('jobs/{job}', [AdminJobController::class, 'show'])->name('jobs.show');
+        Route::get('jobs/{job}/invoice', [AdminJobController::class, 'invoice'])->name('jobs.invoice');
+    });
+});
+
+Route::prefix('staff')->name('staff.')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('login', [StaffAuthController::class, 'showLogin'])->name('login');
+        Route::post('login', [StaffAuthController::class, 'login'])->name('login.store');
+    });
+
+    Route::middleware(['auth', 'staff'])->group(function () {
+        Route::post('logout', [StaffAuthController::class, 'logout'])->name('logout');
+        Route::get('/', [StaffDashboardController::class, 'index'])->name('dashboard');
+        Route::get('services', [StaffServiceController::class, 'index'])->name('services.index');
+        Route::get('services/{service}/register', [VisitController::class, 'create'])->name('visits.create');
+        Route::post('services/{service}/register', [VisitController::class, 'store'])->name('visits.store');
+        Route::get('customers/lookup', [StaffCustomerController::class, 'lookup'])->name('customers.lookup');
+        Route::get('jobs', [StaffJobController::class, 'index'])->name('jobs.index');
+        Route::get('jobs/create', [StaffJobController::class, 'create'])->name('jobs.create');
+        Route::post('jobs', [StaffJobController::class, 'store'])->name('jobs.store');
+        Route::get('jobs/{job}', [StaffJobController::class, 'show'])->name('jobs.show');
+        Route::get('jobs/{job}/edit', [StaffJobController::class, 'edit'])->name('jobs.edit');
+        Route::put('jobs/{job}', [StaffJobController::class, 'update'])->name('jobs.update');
+        Route::delete('jobs/{job}', [StaffJobController::class, 'destroy'])->name('jobs.destroy');
+        Route::post('jobs/{job}/invoice', [StaffJobController::class, 'invoice'])->name('jobs.invoice.store');
+        Route::get('jobs/{job}/invoice', [StaffJobController::class, 'showInvoice'])->name('jobs.invoice');
+        Route::post('jobs/{job}/paid', [StaffJobController::class, 'paid'])->name('jobs.paid');
     });
 });

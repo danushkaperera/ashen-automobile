@@ -1,3 +1,10 @@
+@font-face {
+    font-family: CBABeaconSans;
+    src: local("CBABeaconSans"), local("CBA Beacon Sans");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
 :root {
     --primary: #4BA8E8;
     --secondary: #002856;
@@ -10,8 +17,8 @@
     --footer: #002856;
     --radius: 6px;
     --overlay: 0.55;
-    --font-heading: Oswald, sans-serif;
-    --font-body: Barlow, sans-serif;
+    --font-heading: CBABeaconSans, sans-serif;
+    --font-body: CBABeaconSans, sans-serif;
 }
 
 * { box-sizing: border-box; }

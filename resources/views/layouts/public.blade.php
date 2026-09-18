@@ -1,7 +1,10 @@
 @php
-    $headingFont = setting('heading_font', 'Oswald');
-    $bodyFont = setting('body_font', 'Barlow');
-    $fontQuery = urlencode($headingFont).':wght@400;500;600;700&family='.urlencode($bodyFont).':wght@400;500;600;700';
+    $headingFont = setting('heading_font', 'CBABeaconSans');
+    $bodyFont = setting('body_font', 'CBABeaconSans');
+    $googleFonts = collect([$headingFont, $bodyFont])
+        ->filter(fn ($font) => $font && $font !== 'CBABeaconSans')
+        ->unique()
+        ->values();
 @endphp
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +14,12 @@
     <title>{{ $pageTitle ?? setting('meta_title', setting('site_name')) }}</title>
     <meta name="description" content="{{ $pageDescription ?? setting('meta_description') }}">
     <link rel="icon" href="{{ media_url(setting('favicon'), asset('images/logo.png')) }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family={{ $fontQuery }}&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=6">
+    @if($googleFonts->isNotEmpty())
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family={{ $googleFonts->map(fn ($font) => urlencode($font).':wght@400;500;600;700')->implode('&family=') }}&display=swap" rel="stylesheet">
+    @endif
+    <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=7">
     <style>
         :root {
             --primary: {{ setting('primary_color', '#4BA8E8') }};

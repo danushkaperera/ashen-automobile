@@ -14,8 +14,19 @@
     <a class="stat-box" href="{{ route('admin.services.index') }}">
         <span>Services</span><strong>{{ $services }}</strong>
     </a>
+    <a class="stat-box" href="{{ route('admin.customers.index', ['type' => 'new']) }}">
+        <span>New customers</span><strong>{{ $newCustomers }}</strong>
+    </a>
+    <a class="stat-box" href="{{ route('admin.customers.index', ['type' => 'regular']) }}">
+        <span>Regular customers</span><strong>{{ $regularCustomers }}</strong>
+    </a>
 </div>
-<div class="form-grid">
+<div class="toolbar" style="margin-top:4px">
+    <h3 style="margin:0">Registered services</h3>
+    <a class="btn small secondary" href="{{ route('admin.services.index') }}">Manage services</a>
+</div>
+@include('partials.service-cards', ['services' => $workshopServices, 'mode' => 'admin'])
+<div class="form-grid" style="margin-top:24px">
     <div class="card">
         <h3>Recent bookings</h3>
         <table class="table">

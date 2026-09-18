@@ -22,7 +22,7 @@
         <input type="password" name="password" required>
         <label class="check"><input type="checkbox" name="remember" value="1"> Remember me</label>
         <button class="btn" type="submit" style="margin-top:18px;width:100%">Log in</button>
-        <p class="help" style="margin-top:16px">Default: admin@autobridge.co.nz / Admin@123</p>
+        <p class="help" style="margin-top:16px">Default: admin@autobridge.co.nz / Admin@123<br><a href="{{ route('staff.login') }}">Workshop desk login</a></p>
     </form>
 </div>
 </body>
