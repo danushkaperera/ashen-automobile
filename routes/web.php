@@ -34,6 +34,53 @@ Route::get('/book', [SiteController::class, 'booking'])->name('booking');
 Route::post('/book', [FormController::class, 'booking'])->name('booking.store');
 Route::get('/p/{page:slug}', [SiteController::class, 'page'])->name('page.show');
 
+Route::get('/ashen/{path?}', function (?string $path = '') {
+    $root = realpath(base_path('ashen'));
+    abort_unless($root !== false, 404);
+
+    $relative = ltrim(str_replace('\\', '/', (string) $path), '/');
+    $candidate = $root.DIRECTORY_SEPARATOR.str_replace('/', DIRECTORY_SEPARATOR, $relative);
+
+    if ($relative === '' || is_dir($candidate)) {
+        $candidate = rtrim($candidate, DIRECTORY_SEPARATOR).DIRECTORY_SEPARATOR.'index.html';
+    }
+
+    $file = realpath($candidate);
+    $rootPrefix = strtolower($root).DIRECTORY_SEPARATOR;
+    abort_unless(
+        $file !== false
+        && is_file($file)
+        && str_starts_with(strtolower($file), $rootPrefix),
+        404
+    );
+
+    $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+    $mime = match ($extension) {
+        'html' => 'text/html; charset=UTF-8',
+        'css' => 'text/css; charset=UTF-8',
+        'js' => 'application/javascript; charset=UTF-8',
+        'svg' => 'image/svg+xml',
+        'png' => 'image/png',
+        'jpg', 'jpeg' => 'image/jpeg',
+        'json' => 'application/json',
+        default => null,
+    };
+
+    if ($extension === 'html') {
+        $html = file_get_contents($file);
+        if (! str_contains(strtolower($html), '<base ')) {
+            $html = preg_replace('/<head>/i', '<head><base href="/ashen/">', $html, 1) ?: $html;
+        }
+
+        return response($html, 200, ['Content-Type' => $mime]);
+    }
+
+    $headers = $mime ? ['Content-Type' => $mime] : [];
+    $headers['Cache-Control'] = 'no-cache, must-revalidate';
+
+    return response()->file($file, $headers);
+})->where('path', '.*');
+
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('guest')->group(function () {
         Route::get('login', [AuthController::class, 'showLogin'])->name('login');
