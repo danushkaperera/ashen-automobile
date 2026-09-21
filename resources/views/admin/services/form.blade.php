@@ -14,7 +14,7 @@
     <textarea name="description" style="min-height:180px">{{ old('description', $service->description) }}</textarea>
     <div class="form-grid">
         <div><label>Price (NZD, GST exclusive)</label><input type="number" step="0.01" min="0" name="price" value="{{ old('price', $service->price ?? 0) }}"></div>
-        <div><label>Price label</label><input name="price_label" value="{{ old('price_label', $service->price_label) }}" placeholder="Shown on website if set"></div>
+        <div><label>Price label</label><input name="price_label" value="{{ old('price_label', $service->price_label) }}" placeholder="Internal label for staff and admin"></div>
         <div><label>Icon key</label><input name="icon" value="{{ old('icon', $service->icon) }}"></div>
         <div><label>Order</label><input name="sort_order" value="{{ old('sort_order', $service->sort_order ?? 0) }}"></div>
     </div>

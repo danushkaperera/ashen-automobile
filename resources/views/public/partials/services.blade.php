@@ -13,7 +13,6 @@
                     <div class="body">
                         <h3>{{ $service->title }}</h3>
                         <p>{{ $service->short_description }}</p>
-                        @if($service->displayPrice())<p class="price">{{ $service->displayPrice() }}</p>@endif
                         <a href="{{ route('services.show', $service) }}">View service →</a>
                     </div>
                 </article>

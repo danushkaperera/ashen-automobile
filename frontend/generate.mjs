@@ -238,7 +238,6 @@ function serviceCards(linkFn, list = services) {
                     <div class="body">
                         <h3>${service.title}</h3>
                         <p>${service.short}</p>
-                        <p class="price">Quote</p>
                         <a href="${linkFn.service(service.slug)}">View service →</a>
                     </div>
                 </article>`).join('');
@@ -647,7 +646,6 @@ services.forEach((service, index) => {
         <div class="prose">
             ${service.html}
             <p>We quote before extra work and only proceed with your approval. Visit Auto Bridge at 11a Midas Place, Middleton, or call ${phone} — open 24 hours.</p>
-            <p class="price">Quote</p>
             <a class="btn btn-primary" href="${nested.book}">Book this service</a>
         </div>
         <div class="about-media">
