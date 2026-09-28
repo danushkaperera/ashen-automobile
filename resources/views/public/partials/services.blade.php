@@ -8,7 +8,7 @@
             @foreach($services as $service)
                 <article class="service-card">
                     <div class="media">
-                        <img src="{{ media_url($service->image, asset('images/service-1.svg')) }}" alt="{{ $service->title }}">
+                        <img src="{{ media_url($service->image, asset('images/service-1.svg')) }}" alt="{{ $service->title }}" loading="lazy" decoding="async">
                     </div>
                     <div class="body">
                         <h3>{{ $service->title }}</h3>

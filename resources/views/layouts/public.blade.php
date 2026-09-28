@@ -53,7 +53,7 @@
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="{{ route('home') }}">
-                <img src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') ?: 'Auto Bridge' }}">
+                <img src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') ?: 'Auto Bridge' }}" width="72" height="72" fetchpriority="high">
                 @if(filled(setting('site_name')) || filled(setting('tagline')))
                     <span>
                         @if(filled(setting('site_name')))
@@ -85,7 +85,7 @@
     <footer class="site-footer">
         <div class="container footer-grid">
             <div>
-                <img class="footer-logo" src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') ?: 'Auto Bridge' }}">
+                <img class="footer-logo" src="{{ media_url(setting('logo'), asset('images/logo.png')) }}" alt="{{ setting('site_name') ?: 'Auto Bridge' }}" width="96" height="96" loading="lazy" decoding="async">
                 @if(filled(setting('site_name')))
                     <h3>{{ setting('site_name') }}</h3>
                 @endif
@@ -131,6 +131,6 @@
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/site.js') }}?v=4"></script>
+    <script src="{{ asset('js/site.js') }}?v=5"></script>
 </body>
 </html>

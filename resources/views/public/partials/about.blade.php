@@ -7,7 +7,7 @@
             <a class="btn btn-dark" href="{{ route('about') }}">About the workshop</a>
         </div>
         <div class="about-media">
-            <img src="{{ media_url(setting('about_image'), asset('images/about.svg')) }}" alt="Workshop">
+            <img src="{{ media_url(setting('about_image'), asset('images/about.svg')) }}" alt="Workshop" loading="lazy" decoding="async">
         </div>
     </div>
 </section>

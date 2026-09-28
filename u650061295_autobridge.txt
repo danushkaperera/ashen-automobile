@@ -1,0 +1,30 @@
+u650061295_autobridge
+u650061295_autobridge
+ASHWn4t0B$#@
+
+ASHWn4DanUsh&
+proc_open
+Thisis@AutoBridge1
+
+
+
+
+Contact the person responsible for the 
+ns1.pdns.tech
+ns2.pdns.tech
+ns3.pdns.tech
+nameservers and request that they update the “DKIM” record with the following:
+
+
+before was noreply@ticonline.com.au
+
+no-reply@mecca2.ticonline.com.au
+g1x@AwDQV2^c{kJ1
+
+mecca2.ticonline.com.au
+SMTP Port: 465
+
+mail.mecca2.ticonline.com.au
+SMTP Port: 587
+noreply@mecca2.ticonline.com.au
+ajhsbdjhasb@#assASD

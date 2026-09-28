@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const slides = [...document.querySelectorAll('.hero-slide')];
     const dotsWrap = document.querySelector('.hero-dots');
+    const loadSlide = (slide) => {
+        if (slide && slide.dataset.bg) {
+            slide.style.backgroundImage = `url('${slide.dataset.bg}')`;
+            delete slide.dataset.bg;
+        }
+    };
+    window.addEventListener('load', () => loadSlide(slides[1]));
     if (slides.length > 1 && dotsWrap) {
         slides.forEach((_, i) => {
             const btn = document.createElement('button');
@@ -18,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         let current = 0;
         function show(index) {
             current = index;
+            loadSlide(slides[index]);
+            loadSlide(slides[(index + 1) % slides.length]);
             slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
             [...dotsWrap.children].forEach((dot, i) => dot.classList.toggle('active', i === index));
         }

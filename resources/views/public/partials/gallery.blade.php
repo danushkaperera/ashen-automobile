@@ -7,7 +7,7 @@
         <div class="gallery-grid">
             @foreach($gallery as $item)
                 <div class="gallery-item" data-full="{{ media_url($item->image) }}" data-category="{{ $item->category }}">
-                    <img src="{{ media_url($item->image, asset('images/gallery-1.svg')) }}" alt="{{ $item->title }}">
+                    <img src="{{ media_url($item->image, asset('images/gallery-1.svg')) }}" alt="{{ $item->title }}" loading="lazy" decoding="async">
                     <span>{{ $item->title }}</span>
                 </div>
             @endforeach

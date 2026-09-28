@@ -9,10 +9,23 @@ class Settings
 {
     public const CACHE_KEY = 'site_settings';
 
+    public const TYPES_CACHE_KEY = 'site_setting_types';
+
+    protected ?array $values = null;
+
+    protected ?array $types = null;
+
     public function all(): array
     {
-        return Cache::rememberForever(self::CACHE_KEY, function () {
+        return $this->values ??= Cache::rememberForever(self::CACHE_KEY, function () {
             return SiteSetting::query()->pluck('value', 'key')->all();
+        });
+    }
+
+    protected function types(): array
+    {
+        return $this->types ??= Cache::rememberForever(self::TYPES_CACHE_KEY, function () {
+            return SiteSetting::query()->pluck('type', 'key')->all();
         });
     }
 
@@ -20,11 +33,8 @@ class Settings
     {
         $value = $this->all()[$key] ?? $default;
 
-        if ($value === '1' || $value === '0') {
-            $type = SiteSetting::query()->where('key', $key)->value('type');
-            if ($type === 'boolean') {
-                return $value === '1';
-            }
+        if (($value === '1' || $value === '0') && ($this->types()[$key] ?? null) === 'boolean') {
+            return $value === '1';
         }
 
         return $value;
@@ -61,5 +71,8 @@ class Settings
     public function flush(): void
     {
         Cache::forget(self::CACHE_KEY);
+        Cache::forget(self::TYPES_CACHE_KEY);
+        $this->values = null;
+        $this->types = null;
     }
 }

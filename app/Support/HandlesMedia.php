@@ -17,7 +17,13 @@ trait HandlesMedia
             Storage::disk('public')->delete($existing);
         }
 
-        return $request->file($field)->store($folder, 'public');
+        $path = $request->file($field)->store($folder, 'public');
+
+        if ($path) {
+            ImageOptimizer::optimize(Storage::disk('public')->path($path), ImageOptimizer::maxWidthFor($folder));
+        }
+
+        return $path;
     }
 
     protected function boolean(Request $request, string $field): bool

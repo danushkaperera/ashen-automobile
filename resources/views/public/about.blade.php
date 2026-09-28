@@ -39,7 +39,7 @@
         <div class="grid-3">
             @foreach($team as $member)
                 <article class="team-card">
-                    <img src="{{ media_url($member->photo, asset('images/team-1.svg')) }}" alt="{{ $member->name }}">
+                    <img src="{{ media_url($member->photo, asset('images/team-1.svg')) }}" alt="{{ $member->name }}" loading="lazy" decoding="async">
                     <h3>{{ $member->name }}</h3>
                     <p class="muted">{{ $member->role }}</p>
                     <p>{{ $member->bio }}</p>
