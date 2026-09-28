@@ -168,18 +168,18 @@ function initScrollReveal() {
         '.split > *',
     ].join(',');
 
-    const nodes = [...document.querySelectorAll(selector)];
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const nodes = [...document.querySelectorAll(selector)].filter((el) => {
+        const rect = el.getBoundingClientRect();
+        return !(rect.top < window.innerHeight && rect.bottom > 0);
+    });
     if (!nodes.length) return;
 
     nodes.forEach((el, i) => {
         el.classList.add('reveal');
         el.classList.add(`reveal-delay-${(i % 3) + 1}`);
     });
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        nodes.forEach((el) => el.classList.add('in-view'));
-        return;
-    }
 
     const revealNow = (el) => el.classList.add('in-view');
 
@@ -192,12 +192,5 @@ function initScrollReveal() {
         });
     }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
 
-    nodes.forEach((el) => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.92 && rect.bottom > 80) {
-            revealNow(el);
-            return;
-        }
-        observer.observe(el);
-    });
+    nodes.forEach((el) => observer.observe(el));
 }

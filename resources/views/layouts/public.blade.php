@@ -14,10 +14,13 @@
     <title>{{ $pageTitle ?? setting('meta_title', setting('site_name')) }}</title>
     <meta name="description" content="{{ $pageDescription ?? setting('meta_description') }}">
     <link rel="icon" href="{{ media_url(setting('favicon'), asset('images/logo.png')) }}">
+    @stack('head')
     @if($googleFonts->isNotEmpty())
+        @php $googleFontsUrl = 'https://fonts.googleapis.com/css2?family='.$googleFonts->map(fn ($font) => urlencode($font).':wght@400;500;600;700')->implode('&family=').'&display=swap'; @endphp
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family={{ $googleFonts->map(fn ($font) => urlencode($font).':wght@400;500;600;700')->implode('&family=') }}&display=swap" rel="stylesheet">
+        <link href="{{ $googleFontsUrl }}" rel="stylesheet" media="print" onload="this.media='all'">
+        <noscript><link href="{{ $googleFontsUrl }}" rel="stylesheet"></noscript>
     @endif
     <link rel="stylesheet" href="{{ asset('css/site.css') }}?v=7">
     <style>
@@ -131,6 +134,6 @@
             </div>
         </div>
     </footer>
-    <script src="{{ asset('js/site.js') }}?v=5"></script>
+    <script src="{{ asset('js/site.js') }}?v=6"></script>
 </body>
 </html>

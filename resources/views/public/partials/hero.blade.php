@@ -1,3 +1,6 @@
+@push('head')
+    <link rel="preload" as="image" fetchpriority="high" href="{{ $slides->isNotEmpty() ? media_url($slides->first()->image, asset('images/hero-1.svg')) : asset('images/hero-1.svg') }}">
+@endpush
 <section class="hero">
     @forelse($slides as $i => $slide)
         @php $slideImage = media_url($slide->image, asset('images/hero-1.svg')); @endphp
